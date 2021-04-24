@@ -8,7 +8,7 @@ docker_test:
 	$(DOCKER) exec $${CTN_NAME} make clean ;  \
 	$(DOCKER) stop $${CTN_NAME} && (( ! ret ))
 
-docker_run:
+run_docker:
 	CTN_NAME="test_$$RANDOM" && \
 	$(DOCKER) run -d --entrypoint /sbin/init --privileged --name $${CTN_NAME} -v $(shell pwd)/:/app --rm -w /app $(DOCKER_IMAGE) 
 
